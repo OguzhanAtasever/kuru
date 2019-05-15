@@ -39,6 +39,9 @@ class AnasayfaController extends Controller
             ->where('urun_detay.goster_indirimli',1)
             ->orderBy('guncelleme_tarihi','desc')
             ->take(4)->get();
-        return view('anasayfa',compact('kategoriler','urunler_slider','urunler_gunun_firsati','urunler_one_cikan','urunler_cok_satan','urunler_indirimli'));
+
+        return view('anasayfa',compact('kategoriler','urunler_slider',
+            'urunler_gunun_firsati','urunler_one_cikan','urunler_cok_satan',
+            'urunler_indirimli'));
     }
 }
