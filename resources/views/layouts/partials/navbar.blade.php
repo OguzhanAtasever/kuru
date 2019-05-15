@@ -7,22 +7,25 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route('anasayfa') }}">
                 <img src="/img/logo.png"> {{-- logo da alt dizinlerde sıkıntı çekmemek için /img şeklinde başlatabiliriz--}}
             </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="navbar-form navbar-left">
+
+            <form class="navbar-form navbar-left" action="{{route('urun_ara')}}" method="post"> {{--/post edecek ürün aramaya--}}
+                {{csrf_field()}} {{--//her formda olmalı--}}
                 <div class="input-group">
-                    <input type="text" id="navbar-search" class="form-control" placeholder="Ara">
+                    <input type="text" name="aranan" id="navbar-search" class="form-control" placeholder="Ara" value="{{ old('aranan') }}">
                     <span class="input-group-btn">
-                            <button type="submit" class="btn btn-default">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </span>
+                        <button type="submit" class="btn btn-default">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
                 </div>
             </form>
+
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#"><i class="fa fa-shopping-cart"></i> Sepet <span class="badge badge-theme">5</span></a></li>
                 <li><a href="#">Oturum Aç</a></li>

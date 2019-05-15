@@ -13,7 +13,9 @@ class KategoriTableSeeder extends Seeder
      */
     public function run()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('kategori')->truncate(); //seed çalıştırılınca tablodaki tüm verileri silecek
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         $id = DB::table('kategori')->insertGetId(['kategori_adi'=>'Manav','slug'=>'manav']);
         DB::table('kategori')->insert(['kategori_adi'=>'Sebze','slug'=>'sebze','ust_id'=>$id]);
