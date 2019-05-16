@@ -30,3 +30,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+setTimeout(function () {
+    $('.alert').slideUp(500);
+},3000);
