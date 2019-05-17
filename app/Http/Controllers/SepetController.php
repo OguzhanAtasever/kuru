@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Urun;
 use Cart;
+use Collective\Html\FormFacade;
 use Illuminate\Http\Request;
 
 class SepetController extends Controller
@@ -21,6 +22,24 @@ class SepetController extends Controller
             ->route('sepet')
             ->with('mesaj_tur','success')
             ->with('mesaj','Ürün sepete eklendi.');
+
+    }
+
+
+    public function kaldir($rowid){
+        Cart::remove($rowid);
+        return redirect()
+            ->route('sepet')
+            ->with('mesaj_tur','success')
+            ->with('mesaj','Ürün sepetten kaldırıldı.');
+    }
+    public function bosalt(){
+        Cart::destroy();
+
+        return redirect()
+            ->route('sepet')
+            ->with('mesaj_tur','success')
+            ->with('mesaj','Sepetiniz boşaltıldı.');
 
     }
 }

@@ -16,11 +16,22 @@
                     </tr>
                     @foreach(Cart::content() as $urunCartItem) {{--Cart::content ile içindeki her şeyi çekebiliyoruz--}}
                     <tr>
-                        <td style="width:120px"> <img src="http://via.placeholder.com/120x100?text=UrunResmi"></td>
+                        <td style="width:120px">
+                            <a href="{{ route('urun',$urunCartItem->options->slug) }}">
+                                <img src="http://via.placeholder.com/120x100?text=UrunResmi">
+                            </a>
+                        </td>
                         <td>
                             <a href="{{ route('urun',$urunCartItem->options->slug) }}"> {{--slug değerini nasıl çektiğmiz önemli--}}
                             {{ $urunCartItem->name }}
                             </a>
+
+                            <form action="{{ route('sepet.kaldir',$urunCartItem->rowId) }}" method="post">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <input type="submit" class="btn btn-danger" value="Sepetten Kaldır">
+                            </form>
+
                         </td> {{--Alttürden dolayı name olarak kullanıyoruz --}}
                         <td>{{ $urunCartItem->price }}</td>
                         <td>
@@ -48,7 +59,12 @@
                     </tr>
                 </table>
                 <div>
-                    <a href="#" class="btn btn-info pull-left">Sepeti Boşalt</a>
+                    <form action="{{ route('sepet.bosalt') }}" method="post">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <input type="submit" class="btn btn-info pull-left" value="Sepeti Boşalt">
+
+                    </form>
                     <a href="#" class="btn btn-success pull-right btn-lg">Ödeme Yap</a>
                 </div>
             @else
