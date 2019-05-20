@@ -27,6 +27,10 @@ class Kullanici extends Authenticatable
         return $this->sifre; // artık sişreyi kullanacak password değil
 
     }
+    public function detay()// doğrudan siparişten sepet dosyasına erişim için
+    {
+        return  $this->hasOne('App\Models\KullaniciDetay');
+    }
 
 
 }

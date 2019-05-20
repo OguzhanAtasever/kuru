@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\KullaniciKayitMail;
 use App\Models\Kullanici;
+use App\Models\KullaniciDetay;
 use App\Models\Sepet;
 use App\Models\SepetUrun;
 use Illuminate\Http\Request;
@@ -90,7 +91,7 @@ class KullaniciController extends Controller
 
 
         ]);
-
+        $kullanici->detay()->save(new KullaniciDetay());
 
         Mail::to(request('email'))->send(new KullaniciKayitMail($kullanici));
 
