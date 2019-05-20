@@ -35,9 +35,12 @@
                         </td> {{--Alttürden dolayı name olarak kullanıyoruz --}}
                         <td>{{ $urunCartItem->price }}</td>
                         <td>
-                            <a href="#" class="btn btn-xs btn-default">-</a>
+                            <a href="#" class="btn btn-xs btn-default urun-adet-azalt"
+                               data-id="{{ $urunCartItem->rowId }}" data-adet="{{ $urunCartItem->qty-1  }}">-</a>
                             <span style="padding: 10px 20px">{{$urunCartItem->qty}}</span>
-                            <a href="#" class="btn btn-xs btn-default">+</a>
+                            <a href="#" class="btn btn-xs btn-default urun-adet-artir"
+                               data-id="{{ $urunCartItem->rowId }}" data-adet="{{ $urunCartItem->qty+1  }}">+</a> {{--Buradakiler app.js içerisine gönderilerek orada işleniyor
+                                --}}
                         </td>
                         <td class="text-right">{{ $urunCartItem->subtotal }}</td>
                         <td>
@@ -79,4 +82,24 @@
 
         </div>
     </div>
+@endsection
+@section('footer')
+    <script>
+        $(function () {
+            $('.urun-adet-artir, .urun-adet-azalt').on('click',function () {
+                var id= $(this).attr('data-id');
+                var adet = $(this).attr('data-adet');
+                $.ajax({
+                    type: 'PATCH',
+                    url: '{{url('sepet/guncelle')}}/'+id,
+                    data: {adet: adet},
+                    success:function () {
+                        window.location.href = '{{ route('sepet') }}';
+
+                    }
+                });
+            });
+
+        })
+    </script>
 @endsection
