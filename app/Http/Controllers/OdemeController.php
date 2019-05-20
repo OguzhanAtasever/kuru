@@ -22,7 +22,7 @@ class OdemeController extends Controller
                 ->with('mesaj','Ödeme işlemi için sepetinizde bir ürün bulunmalıdır');
         }
         $kullanici_detay = auth()->user()->detay; //detay kullanici modelde tanımlı
-        return view('odeme',compact('kullanici_detay'));
+        return view('payment',compact('kullanici_detay'));
     }
     public function odemeyap(){
         $siparis = request()->all();
