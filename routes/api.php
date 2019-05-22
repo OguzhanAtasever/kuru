@@ -15,4 +15,9 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+
 });
+Route::get('urunler','UrunController@urunler')->name('api.urunler');
+Route::get('kategoriler','KategoriController@kategoriler')->name('api.kategoriler');
+Route::get('siparisler','SiparisController@siparisler')->name('api.siparisler');
+Route::get('sepet','SepetController@sepet')->name('api.sepet');

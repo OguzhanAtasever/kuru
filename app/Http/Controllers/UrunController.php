@@ -23,4 +23,9 @@ class UrunController extends Controller
         request()->flash(); //arama barındaki eki değeri tutmak için daha sonra  {{ old ('aranan ) şeklinde olacak
         return view('arama',compact('urunler'));
     }
+    public function urunler()
+    {
+        $urunler = Urun::all();
+        return response()->json($urunler);
+    }
 }

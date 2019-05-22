@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 
 class SiparisController extends Controller
 {
-
-
     public function index(){
         $siparisler = Siparis::with('sepet')
             ->whereHas('sepet',function ($query){
@@ -18,6 +16,7 @@ class SiparisController extends Controller
 
         return view('siparisler',compact('siparisler'));
     }
+
     public function detay($id){
         $siparis = Siparis::with('sepet.sepet_urunler.urun')
             ->whereHas('sepet',function ($query){
@@ -26,5 +25,9 @@ class SiparisController extends Controller
             ->where('siparis.id',$id)
             ->firstOrFail();
         return view('siparis',compact('siparis')); // id değerine göre siparislerin ne olduğunu görmemizi sağlayacak
+    }
+
+    public function siparisler(){
+
     }
 }

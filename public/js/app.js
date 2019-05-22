@@ -49439,14 +49439,16 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!*********************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resourece/sass/admin.scss ./resourece/sass/login.scss ***!
+  \*********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /var/www/html/Sites/kuru/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/Sites/kuru/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/Sites/kuru/resources/sass/app.scss */"./resources/sass/app.scss");
+!(function webpackMissingModule() { var e = new Error("Cannot find module '/var/www/html/Sites/kuru/resourece/sass/admin.scss'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
+!(function webpackMissingModule() { var e = new Error("Cannot find module '/var/www/html/Sites/kuru/resourece/sass/login.scss'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 /***/ })
