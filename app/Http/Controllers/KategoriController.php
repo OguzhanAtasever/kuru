@@ -35,9 +35,5 @@ class KategoriController extends Controller
 
         return view('kategori',compact('kategori','alt_kategoriler','urunler'));
     }
-    public function kategoriler()
-    {
-        $kategoriler = Kategori::all();
-        return response()->json($kategoriler);
-    }
+
 }

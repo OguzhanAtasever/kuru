@@ -27,7 +27,5 @@ class SiparisController extends Controller
         return view('siparis',compact('siparis')); // id değerine göre siparislerin ne olduğunu görmemizi sağlayacak
     }
 
-    public function siparisler(){
 
-    }
 }
