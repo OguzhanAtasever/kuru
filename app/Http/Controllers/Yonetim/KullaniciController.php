@@ -1,17 +1,13 @@
- <?php
-
+<?php
 
 namespace App\Http\Controllers\Yonetim;
 
-
 use Illuminate\Http\Request;
-use App\Models\Kullanici;
-use Auth;
-
+use App\Http\Controllers\Controller;
 
 class KullaniciController extends Controller
 {
-   public function oturumac(){
+    public function oturumac(){
 
         //web.phpde route tanımladığım match fonku için post mu get mi kontrol yapmamız gerek
         //giriş işlemleri
@@ -23,18 +19,18 @@ class KullaniciController extends Controller
                 'email'=>'required|email',
                 'sifre'=>'required'
 
-            ]); 
+            ]);
             //dogrulama yapıldıktan sonra artık giriş işlemine geçiyoruz.Giriş işlemlerini dizide tanımlıyoruz.
             $credentials=[
                 'email'=>request()->get('email'),
                 'password'=>request()->get('sifre'),
-                'yonetici_mi'=>1 
+                'yonetici_mi'=>1
 
             ];
 
             //credential degerini saglıyorsa
             //laravelde müşteri ve yönetici arayüzü için farklı kullanıcılar için guard yapısı tanımlayabiliriz
-            
+
             if(Auth::guard('yonetim')->attempt($credentials,request()->has('benihatirla')))
             {
                 return redirect()->route('yonetim.anasayfa');
@@ -47,7 +43,7 @@ class KullaniciController extends Controller
         return view('yonetim.oturumac');
    }
    public function oturumukapat(){
-      //yönetimle ilgili giriş yapılan yer auth::guard yeri 
+      //yönetimle ilgili giriş yapılan yer auth::guard yeri
         Auth::guard('yonetim')->logout();
         request()->session()->flush();
         request()->session()->regenerate();
@@ -59,5 +55,4 @@ class KullaniciController extends Controller
         $list=Kullanici::orderByDesc('olusturma_tarihi')->paginate(8);
         return view('yonetim.kullanici.index',compact('list'));
    }
-
 }
