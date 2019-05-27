@@ -11,6 +11,12 @@
 |
 */
 
+Route::group(['prefix'=>'yonetim','namespace'=>'Yonetim'],function(){
+    Route::redirect('/','/yonetim/oturumac');
+  Route::match(['get','post'],'/oturumac','KullaniciController@oturumac')->name('yonetim.oturumac');
+    Route::get('/anasayfa','AnasayfaController@index')->name('yonetim.anasayfa');
+});
+
 Route::get('/', 'AnasayfaController@index')->name('anasayfa');
 
 Route::get('/kategori/{slug_kategoriadi}','KategoriController@index')->name('kategori');
