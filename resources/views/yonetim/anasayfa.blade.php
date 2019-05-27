@@ -42,4 +42,6 @@
                         </div>
                     </div>
                 </section>
+
+{{-- @API\DenemeControllerextends('yonetim.layouts.master') --}}
 @endsection

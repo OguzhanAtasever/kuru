@@ -31,4 +31,4 @@ class KullaniciController extends Controller
     	 return view('yonetim.oturumac');
     	}
     }
-
+}

@@ -109,4 +109,6 @@ class SepetController extends Controller
         session()->flash('mesaj','Adet bilgisi güncellendi');
         return response()->json(['success'=>true]);
     }
+
+
 }
