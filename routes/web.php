@@ -1,21 +1,28 @@
-<?php
+ <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
+//yönetici sayfaları ile kullanacağımız route grubunu ayarlayacağız
 Route::group(['prefix'=>'yonetim','namespace'=>'Yonetim'],function(){
     Route::redirect('/','/yonetim/oturumac');
     Route::match(['get','post'],'/oturumac','KullaniciController@oturumac')->name('yonetim.oturumac');
     Route::get('/anasayfa','AnasayfaController@index')->name('yonetim.anasayfa');
+    //match fonkku birden fazla method tipine göre bir sayfayı açmayı sağlar
+   Route::get('/oturumukapat','KullaniciController@oturumukapat')->name('yonetim.oturumukapat');
 });
+
+   Route::group(['middleware'=>'yonetim'],function(){
+              Route::get('/anasayfa','AnasayfaController@index')->name('yonetim.anasayfa');
+         
+      // /yonetim/kullanici
+      Route::group(['prefix'=>'kullanici'],function(){
+        Route::match(['get','post'],'/','KullaniciController@index')->name('yonetim.kullanici');
+        Route::get('/yeni','KullaniciController@form')->name('yonetim.kullanici.yeni');
+        Route::get('/duzenle/{id}','KullaniciController@form')->name('yonetim.kullanici.duzenle');
+        Route::post('/kaydet/{id?}','KullaniciController@kaydet')->name('yonetim.kullanici.kaydet');
+        Route::get('/sil/{id}','KullaniciController@sil')->name('yonetim.kullanici.sil');
+      });
+  });
+
 
 Route::get('/', 'AnasayfaController@index')->name('anasayfa');
 
@@ -41,7 +48,6 @@ Route::group(['middleware'=>'auth'],function (){
     Route::get('/siparisler','SiparisController@index')->name('siparisler');
     Route::get('/siparisler/{id}','SiparisController@detay')->name('siparis');
 }); // kullanıcı girişi olan kişiler erişebilecekler
-
 
 Route::group(['prefix'=>'kullanici'],function (){
     Route::get('/oturumac','KullaniciController@giris_form')->name('kullanici.oturumac');

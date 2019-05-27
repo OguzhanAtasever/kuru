@@ -56,3 +56,4 @@ class KullaniciController extends Controller
         return view('yonetim.kullanici.index',compact('list'));
    }
 }
+

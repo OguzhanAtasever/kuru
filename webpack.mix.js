@@ -13,14 +13,9 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
-<<<<<<< HEAD
 
-mix.copy('resources/js/admin-app.js','public/js/admin-app.js');
-mix.sass('resources/sass/admin.scss','public/css');
-mix.sass('resources/sass/login.scss','public/css');
-=======
-mix.copy('resources/js/admin-app.js','public/js/admin-app.js');
-mix.sass('resourece/sass/admin.scss','public/css');
-mix.sass('resourece/sass/login.scss','public/css');
-
->>>>>>> 9553ea7c8a9764e100e73a76e6717a52d5084616
+//templatedeki css dosyalarını public altındaki dosyalara aktarma işlemi
+mix.copy('resources/assets/js/admin-app.js','public/js/admin-app.js');
+//sass dosyalarını kopyalama
+mix.sass('resources/assets/sass/admin.scss','public/css');
+mix.sass('resources/assets/sass/login.scss','public/css');
