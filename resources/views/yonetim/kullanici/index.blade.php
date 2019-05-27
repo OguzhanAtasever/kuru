@@ -24,7 +24,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                           {{-- veritabanından gelen degerleri listeleme işlemleri  --}}
+                           {{-- veritabanından gelen tüm kayıtları listeleyecek  --}}
                            @foreach($list as $gelen)
                             <tr>
                                 <td>{{ $gelen->id }}</td>
@@ -35,18 +35,18 @@
                                     <span class="label label-success">Aktif</span>
                                  @else
                                     <span class="label label-warning">Pasif</span>
-                           @endif
+                                 @endif
                                 </td>
                                 <td>
                                  @if($gelen->yonetici_mi)
                                     <span class="label label-success">Yönetici</span>
                                  @else
                                     <span class="label label-warning">Müşteri</span>
-                           @endif
-                        </td>
-                        <td>{{ $gelen->olusturma_tarihi }}</td>
+                                 @endif
+                                </td>
+                                <td>{{ $gelen->olusturulma_tarihi }}</td>
                                 <td style="width: 100px">
-                                    <a href="#" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
+                                    <a href="{{ route('yonetim.kullanici.duzenle',$gelen->id) }}" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
                                         <span class="fa fa-pencil"></span>
                                     </a>
                                     <a href="#" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('Emin Misiniz?')">

@@ -11,11 +11,11 @@
 
 <body>
     <div class="container">
-        <form class="form-signin" action="{{ route('yonetim.oturumac') }}" method="post">
-          {{csrf_field()}}
+        <form class="form-signin" action="{{route('yonetim.oturumac')}}" method="post">
+           {{ csrf_field() }}
             <img src="/img/logo.png" class="logo">
 
-             {{--  @include('layouts.partials.errors') --}}
+             @include('layouts.partials.errors') 
 
               <label for="email" class="sr-only">Email</label>
               <input type="email" id="email" name="email" class="form-control" placeholder="Email" required autofocus>
@@ -28,7 +28,7 @@
               </div>
               <button class="btn btn-lg btn-primary btn-block" type="submit">Giriş Yap</button>
               <div class="links">
-                <a href="{{route('anasayfa')}}">&larr; Siteye Dön</a>
+                <a href="{{route('anasayfa') }}">&larr; Siteye Dön</a>
               </div>
           
         </form>

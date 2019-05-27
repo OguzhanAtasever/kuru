@@ -32,7 +32,14 @@ class KullaniciController extends Controller
             'email'=>'required|email',
             'sifre'=>'required'
         ]);
-        if (auth()->attempt(['email'=>request('email'),'password'=>request('sifre')],request()->has('benihatirla')))
+        //burada ekstra aktif mi bilgisini kontrol etmeli
+        $credentials=[
+            'email'=>request('email'),
+            'password'=>request('sifre'),
+            'aktif_mi'=>1
+        ];
+
+        if (auth()->attempt($credentials,request()->has('benihatirla')))
         {
             request()->session()->regenerate();
             $aktif_sepet_id = Sepet::aktif_sepet_id(); //kullanici id si oluşturuyor

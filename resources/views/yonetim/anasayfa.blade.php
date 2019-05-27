@@ -1,4 +1,4 @@
-@extends('yonetim.layouts.master')
+ @extends('yonetim.layouts.master')
 @section('title','Anasayfa')
 @section('content')
 
