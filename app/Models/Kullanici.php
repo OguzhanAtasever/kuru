@@ -13,7 +13,7 @@ class Kullanici extends Authenticatable
     use SoftDeletes;
     protected $table = "kullanici";
     //create komutu ile kullanılacak olan
-    protected $fillable = ['adsoyad', 'email', 'sifre','aktivasyon_anahtari','aktif_mi'];
+    protected $fillable = ['adsoyad', 'email', 'sifre','aktivasyon_anahtari','aktif_mi','yonetici_mi'];
 
     //kullanıcının görmesini istemediğimiz alanlar
     protected $hidden = ['sifre', 'aktivasyon_anahtari' ];
@@ -24,12 +24,12 @@ class Kullanici extends Authenticatable
 
     public function  getAuthPassword()
     {
-        return $this->sifre; // artık sişreyi kullanacak password değil
+        return $this->sifre; // artık sifreyi kullanacak password değil
 
     }
     public function detay()// doğrudan siparişten sepet dosyasına erişim için
     {
-        return  $this->hasOne('App\Models\KullaniciDetay');
+        return  $this->hasOne('App\Models\KullaniciDetay')->withDefault();
     }
 
 

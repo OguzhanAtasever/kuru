@@ -9,7 +9,7 @@
             <div class="col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">Kategoriler</div>
-                    <div class="panel-heading">Test icin</div>
+                    
                     <div class="list-group categories">
                         @foreach($kategoriler as $kategori)
                         <a href="{{ route('kategori',$kategori->slug) }}" class="list-group-item"><i class="fa fa-arrow-circle-o-right"></i> {{$kategori->kategori_adi}}</a>
