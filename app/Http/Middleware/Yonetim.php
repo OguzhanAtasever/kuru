@@ -21,6 +21,6 @@ class Yonetim
             return $next($request);
         }
         return redirect()->route('yonetim.oturumac');
-        
+           
     }
 }

@@ -46,7 +46,7 @@ class KullaniciController extends Controller
             } 
         }
         return view('yonetim.oturumac');
-   }
+    }
     public function oturumukapat(){
         //yönetimle ilgili giriş yapılan yer auth::guard yeri
             Auth::guard('yonetim')->logout();

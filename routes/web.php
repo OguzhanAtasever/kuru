@@ -6,10 +6,10 @@ Route::group(['prefix'=>'yonetim','namespace'=>'Yonetim'],function(){
     Route::redirect('/','/yonetim/oturumac');
 
     //match fonkku birden fazla method tipine göre bir sayfayı açmayı sağlar
-   Route::match(['get','post'],'/oturumac','KullaniciController@oturumac')->name('yonetim.oturumac');
-   Route::get('/oturumukapat','KullaniciController@oturumukapat')->name('yonetim.oturumukapat');
+      Route::match(['get','post'],'/oturumac','KullaniciController@oturumac')->name('yonetim.oturumac');
+      Route::get('/oturumukapat','KullaniciController@oturumukapat')->name('yonetim.oturumukapat');
 
-   Route::group(['middleware'=>'yonetim'],function(){
+      Route::group(['middleware'=>'yonetim'],function(){
               Route::get('/anasayfa','AnasayfaController@index')->name('yonetim.anasayfa');
          
 
@@ -22,7 +22,7 @@ Route::group(['prefix'=>'yonetim','namespace'=>'Yonetim'],function(){
         Route::get('/sil/{id}','KullaniciController@sil')->name('yonetim.kullanici.sil');
       });
 
-      // /yonetim/kullanici
+      // /yonetim/kategori
       Route::group(['prefix'=>'kategori'],function(){
         Route::match(['get','post'],'/','KategoriController@index')->name('yonetim.kategori');
         Route::get('/yeni','KategoriController@form')->name('yonetim.kategori.yeni');
@@ -30,6 +30,16 @@ Route::group(['prefix'=>'yonetim','namespace'=>'Yonetim'],function(){
         Route::post('/kaydet/{id?}','KategoriController@kaydet')->name('yonetim.kategori.kaydet');
         Route::get('/sil/{id}','KategoriController@sil')->name('yonetim.kategori.sil');
       });
+
+      // /yonetim/urun
+      Route::group(['prefix'=>'urun'],function(){
+        Route::match(['get','post'],'/','UrunController@index')->name('yonetim.urun');
+        Route::get('/yeni','UrunController@form')->name('yonetim.urun.yeni');
+        Route::get('/duzenle/{id}','UrunController@form')->name('yonetim.urun.duzenle');
+        Route::post('/kaydet/{id?}','UrunController@kaydet')->name('yonetim.urun.kaydet');
+        Route::get('/sil/{id}','UrunController@sil')->name('yonetim.urun.sil');
+      });
+
   });
 
 });

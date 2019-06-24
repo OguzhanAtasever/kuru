@@ -21,8 +21,12 @@ class Urun extends Model
     public function kategoriler(){
         return $this->belongsToMany('App\Models\Kategori','kategori_uruns');
     }
+
+    //urunun detay bilgilerine detay fonknuyla erişebileceğiz
+
     public function detay(){
-        return $this->hasOne('App\Models\UrunDetay');
+        //hasone birebir ilişki yapısında verileri çekmemizi sağlayan yapıdır
+        return $this->hasOne('App\Models\UrunDetay')->withDefault();
     }
 
 
