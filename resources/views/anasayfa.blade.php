@@ -67,7 +67,7 @@
                         @foreach($urunler_one_cikan as $urun_detay)
                         <div class="col-md-3 product">
                             <a href="{{route('urun',$urun_detay->slug)}}">
-                                  <img src="{{ $urun->detay->urun_resmi != null ? asset('uploads/urunler/'. $urun->detay->urun_resmi) : 'http://via.placeholder.com/640x400?text=UrunResmi'}}" class="img-responsive" style="min-width:100%;">
+                                  <img src="{{ $urun_detay->urun_resmi != null ? asset('uploads/urunler/'. $urun_detay->urun_resmi) : 'http://via.placeholder.com/640x400?text=UrunResmi'}}" class="img-responsive" style="min-width:100%;">
                             </a>
                             <p><a href="{{route('urun',$urun_detay->slug)}}">{{$urun_detay->urun_adi}}</a></p>
                             <p class="price">{{ $urun_detay->fiyati }} ₺</p>

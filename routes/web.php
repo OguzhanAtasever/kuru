@@ -39,6 +39,15 @@ Route::group(['prefix'=>'yonetim','namespace'=>'Yonetim'],function(){
         Route::post('/kaydet/{id?}','UrunController@kaydet')->name('yonetim.urun.kaydet');
         Route::get('/sil/{id}','UrunController@sil')->name('yonetim.urun.sil');
       });
+      // /yonetim/siparis
+      Route::group(['prefix'=>'siparis'],function(){
+        Route::match(['get','post'],'/','SiparisController@index')->name('yonetim.siparis');
+        Route::get('/yeni','SiparisController@form')->name('yonetim.siparis.yeni');
+        Route::get('/duzenle/{id}','SiparisController@form')->name('yonetim.siparis.duzenle');
+        Route::post('/kaydet/{id?}','SiparisController@kaydet')->name('yonetim.siparis.kaydet');
+        Route::get('/sil/{id}','SiparisController@sil')->name('yonetim.siparis.sil');
+      });
+
 
   });
 
